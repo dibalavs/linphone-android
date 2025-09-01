@@ -1,6 +1,14 @@
 
-[![pipeline status](https://gitlab.linphone.org/BC/public/linphone-android/badges/master/pipeline.svg)](https://gitlab.linphone.org/BC/public/linphone-android/commits/master) 
+[![pipeline status](https://gitlab.linphone.org/BC/public/linphone-android/badges/master/pipeline.svg)](https://gitlab.linphone.org/BC/public/linphone-android/commits/master)
 [![weblate status](https://weblate.linphone.org/widget/linphone/linphone-android-6-0/status-badge.png)](https://weblate.linphone.org/engage/linphone/)
+
+> [!WARNING]
+> This repository is not what are you looking for.
+
+This repo contains my lockal hacks to
+1) allow to use push notifications for 3rd-party SIP accounts
+2) replace google-services.json to my own
+3) Use local linphone SDK with workarounds for asterisk restrictions.
 
 Linphone is an open source softphone for voice and video over IP calling and instant messaging.
 
@@ -42,7 +50,7 @@ This release only works on Android OS 9.0 and newer.
 
 # Building the app
 
-If you have Android Studio, simply open the project, wait for the gradle synchronization and then build/install the app.  
+If you have Android Studio, simply open the project, wait for the gradle synchronization and then build/install the app.
 It will download the linphone library from our Maven repository as an AAR file so you don't have to build anything yourself.
 
 If you don't have Android Studio, you can build and install the app using gradle:
@@ -57,8 +65,8 @@ to install the generated APK in the previous step (use installRelease instead if
 
 APK files are stored within ```./app/build/outputs/apk/debug/``` and ```./app/build/outputs/apk/release/``` directories.
 
-When building a release AppBundle, use releaseAppBundle target instead of release.   
-Also make sure you have a NDK installed and that you have an environment variable named ```ANDROID_NDK_HOME``` that contains the path to the NDK.  
+When building a release AppBundle, use releaseAppBundle target instead of release.
+Also make sure you have a NDK installed and that you have an environment variable named ```ANDROID_NDK_HOME``` that contains the path to the NDK.
 This is to be able to include native libraries symbols into app bundle for the Play Store.
 
 ## Building a local SDK
@@ -131,7 +139,7 @@ adb logcat -d | ndk-stack -sym ./libs-debug/arm64-v8a/
 ```
 If you don't know the CPU architecture, use the following instead:
 ```
-adb logcat -d | ndk-stack -sym ./libs-debug/`adb shell getprop ro.product.cpu.abi | tr -d '\r'` 
+adb logcat -d | ndk-stack -sym ./libs-debug/`adb shell getprop ro.product.cpu.abi | tr -d '\r'`
 ```
 Warning: This command won't print anything until you reproduce the crash!
 
@@ -156,7 +164,7 @@ If you don't have such file because you don't rely on Firebase Cloud Messaging f
 
 Now that Google Cloud Messaging has been deprecated and will be completely removed on April 11th 2019, the only official way of using push notifications is through Firebase.
 
-However to make Firebase push notifications work, the project needs to have a ```app/google-services.json``` file that contains the configuration.  
+However to make Firebase push notifications work, the project needs to have a ```app/google-services.json``` file that contains the configuration.
 We have archived our own, so you can build your linphone-android application and still receive push notifications from our free SIP service (sip.linphone.org).
 If you delete it, you won't receive any push notification.
 

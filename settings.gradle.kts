@@ -34,14 +34,7 @@ dependencyResolutionManagement {
                 }
             }
         } else {
-            maven {
-                println("Using CI built SDK from maven repository at https://download.linphone.org/maven_repository")
-                name = "linphone.org maven repository"
-                url = uri("https://download.linphone.org/maven_repository")
-                content {
-                    includeGroup("org.linphone")
-                }
-            }
+            throw GradleException("Only local SDK with my hacks SDK allowed from: https://github.com/dibalavs/linphone-sdk ")
         }
     }
 }

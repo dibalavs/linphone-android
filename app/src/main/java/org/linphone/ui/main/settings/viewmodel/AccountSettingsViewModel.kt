@@ -138,7 +138,7 @@ class AccountSettingsViewModel
                 account = found
 
                 val params = account.params
-                val pushAvailableForDomain = params.identityAddress?.domain in corePreferences.pushNotificationCompatibleDomains
+                val pushAvailableForDomain = true
                 isDomainInPushNotificationCompatibleList.postValue(pushAvailableForDomain)
                 if (pushAvailableForDomain) {
                     pushNotificationsAvailable.postValue(core.isPushNotificationAvailable)
@@ -196,7 +196,7 @@ class AccountSettingsViewModel
 
                 ccmpServerUrl.postValue(params.ccmpServerUrl)
 
-                limeServerUrl.postValue(params.limeServerUrl)
+                // limeServerUrl.postValue(params.limeServerUrl)
 
                 limeAlgorithms.postValue(params.limeAlgo)
 
@@ -320,7 +320,7 @@ class AccountSettingsViewModel
                 }
 
                 newParams.ccmpServerUrl = ccmpServerUrl.value.orEmpty().trim()
-                newParams.limeServerUrl = limeServerUrl.value.orEmpty().trim()
+                // newParams.limeServerUrl = limeServerUrl.value.orEmpty().trim()
                 newParams.limeAlgo = limeAlgorithms.value.orEmpty().trim()
 
                 newParams.useInternationalPrefixForCallsAndChats = applyPrefix.value == true
